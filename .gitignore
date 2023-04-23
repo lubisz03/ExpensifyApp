@@ -1,3 +1,4 @@
 node_modules/
+.firebase/
 public/bundle.js
 public/bunde.js.map
