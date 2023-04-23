@@ -1,4 +1,5 @@
 node_modules/
 .firebase/
 public/bundle.js
-public/bunde.js.map
+public/bundle.js.map
+public/bundle.js.LICENSE.txt
