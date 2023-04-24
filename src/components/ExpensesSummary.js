@@ -8,8 +8,8 @@ export const ExpensesSummary = (props) =>
   props.expensesCount != 0 && (
     <div>
       <h1 data-testid='expense-summary-text'>
-        {`Viewing ${props.expensesCount} ${
-          props.expensesCount > 1 ? 'expenses' : 'expense'
+        {`Viewing ${props.expenses.length} ${
+          props.expenses.length > 1 ? 'expenses' : 'expense'
         } totaling ${numeral(selectExpensesTotal(props.expenses) / 100).format(
           '$0,0.00'
         )}`}
@@ -20,7 +20,6 @@ export const ExpensesSummary = (props) =>
 const mapStateToProps = (state) => {
   return {
     expenses: selectExpenses(state.expenses, state.filters),
-    expensesCount: selectExpenses(state.expenses, state.filters).length,
   };
 };
 
