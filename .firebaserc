@@ -1,5 +1,9 @@
 {
   "projects": {
-    "default": "expensifyapp-2ba16"
-  }
+    "default": "expensifyapp-2ba16",
+    "prod": "expensifyapp-2ba16",
+    "dev": "expensifytest-fb838"
+  },
+  "targets": {},
+  "etags": {}
 }

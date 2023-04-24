@@ -4,11 +4,12 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "cross-env NODE_ENV=test jest --env=jsdom --watchAll",
+    "test": "cross-env NODE_ENV=test jest --env=jsdom --config=jest.config.js --watchAll",
     "coverage": "jest --coverage",
     "build": "webpack --config webpack.prod.js",
     "start": "webpack-dev-server --config webpack.dev.js",
-    "server": "node server/server.js"
+    "server": "node server/server.js",
+    "deploy": "firebase use prod && npm run build && firebase deploy --only hosting"
   },
   "author": "Antoni Łubisz",
   "license": "ISC",
