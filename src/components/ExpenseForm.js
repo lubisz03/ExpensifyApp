@@ -61,12 +61,16 @@ class ExpenseForm extends React.Component {
 
   render() {
     return (
-      <div data-testid='expense-form-test'>
+      <div data-testid='expense-form-test' className='content-container'>
         {this.state.error && <p>{this.state.error}</p>}
-        <form onSubmit={this.onSubmit} data-testid='expense-form'>
+        <form
+          onSubmit={this.onSubmit}
+          data-testid='expense-form'
+          className='form'>
           <input
             type='text'
             placeholder='Description'
+            className='text-input'
             autoFocus
             value={this.state.description}
             onChange={this.onDescriptionChange}
@@ -74,6 +78,7 @@ class ExpenseForm extends React.Component {
 
           <input
             type='text'
+            className='text-input'
             placeholder='Amount'
             value={this.state.amount}
             onChange={this.onAmountChange}
@@ -85,9 +90,14 @@ class ExpenseForm extends React.Component {
           />
           <textarea
             placeholder='Add a note for your expense (optional)'
+            className='textarea'
             value={this.state.note}
             onChange={this.onNoteChange}></textarea>
-          <button data-testid='expense-form-btn'>Add Expense</button>
+          <div>
+            <button data-testid='expense-form-btn' className='button'>
+              Save Expense
+            </button>
+          </div>
         </form>
       </div>
     );

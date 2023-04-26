@@ -4,13 +4,11 @@ import { Provider } from 'react-redux';
 import AppRouter from './routers/AppRouter';
 import { startSetExpenses } from './actions/expenses';
 import { login, logout } from './actions/auth';
-import './styles/styles.scss';
 import configureStore from './store/configureStore';
+import './styles/styles.scss';
 import 'react-day-picker/dist/style.css';
 import { firebase } from './firebase/firebase';
 import { createBrowserHistory } from 'history';
-import { useNavigate } from 'react-router-dom';
-import LoginPage from './components/LoginPage';
 
 const store = configureStore();
 const history = createBrowserHistory();
