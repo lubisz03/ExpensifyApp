@@ -35,7 +35,6 @@ class ExpenseForm extends React.Component {
   onDateChange = (createdAt) => {
     if (createdAt) {
       this.setState(() => ({ createdAt }));
-      console.log(createdAt);
     }
   };
 
@@ -51,7 +50,6 @@ class ExpenseForm extends React.Component {
     } else {
       const error = '';
       this.setState(() => ({ error }));
-      console.log('submitted!');
       this.props.onSubmit({
         description: this.state.description,
         amount: parseFloat(this.state.amount, 10) * 100,
@@ -80,18 +78,6 @@ class ExpenseForm extends React.Component {
             value={this.state.amount}
             onChange={this.onAmountChange}
           />
-          {/* <SingleDatePicker
-            date={this.state.createdAt}
-            onDateChange={this.onDateChange}
-            focused={this.state.calendarFocused}
-            onFocusChange={this.onCalendarFocusedChange}
-            numberOfMonths={1}
-            isOutsideRange={() => false}
-          /> */}
-          {/* <DatePicker
-            onChange={this.onDateChange}
-            selected={this.state.createdAt}
-          /> */}
           <DayPicker
             mode='single'
             selected={this.state.createdAt}

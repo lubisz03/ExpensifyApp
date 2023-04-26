@@ -1,21 +1,62 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route, Link, NavLink } from 'react-router-dom';
+import {
+  Routes,
+  Route,
+  Link,
+  NavLink,
+  Router,
+  BrowserRouter,
+  useNavigate,
+} from 'react-router-dom';
 import Header from '../components/Header';
 import ExpenseDashboardPage from '../components/ExpenseDashboardPage';
 import AddExpensePage from '../components/AddExpensePage';
 import EditExpensePage from '../components/EditExpensePage';
-import HelpPage from '../components/HelpPage';
 import NotFoundPage from '../components/NotFoundPage';
+import LoginPage from '../components/LoginPage';
+import PrivateRoute from './PrivateRoute';
+import PublicRoute from './PublicRoute';
 
 const AppRouter = (props) => (
   <BrowserRouter>
     <div>
-      <Header />
       <Routes>
-        <Route path='/' element={<ExpenseDashboardPage />} exact={true} />
-        <Route path='/create' element={<AddExpensePage />} />
-        <Route path='/edit/:id' element={<EditExpensePage />} />
-        <Route path='/help' element={<HelpPage />} />
+        <Route
+          path='/'
+          element={
+            <PublicRoute>
+              <LoginPage />
+            </PublicRoute>
+          }
+          exact={true}
+        />
+        <Route
+          path='/dashboard'
+          element={
+            <PrivateRoute>
+              <Header />
+              <ExpenseDashboardPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path='/create'
+          element={
+            <PrivateRoute>
+              <Header />
+              <AddExpensePage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path='/edit/:id'
+          element={
+            <PrivateRoute>
+              <Header />
+              <EditExpensePage />
+            </PrivateRoute>
+          }
+        />
         <Route path='*' element={<NotFoundPage />} />
       </Routes>
     </div>

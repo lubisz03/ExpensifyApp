@@ -12,4 +12,11 @@ describe('Header', () => {
     );
     expect(screen).toMatchSnapshot();
   });
+
+  it('should call startLogout on button click', () => {
+    const startLogout = jest.fn();
+    render(<Header dispatch={disptach(startLogout())} />);
+    fireEvent.click(screen.getByTestId('header-btn'));
+    expect(startLogout).toHaveBeenCalled();
+  });
 });

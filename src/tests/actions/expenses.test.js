@@ -41,7 +41,7 @@ describe('Expense actions tests', () => {
   });
 
   it('should add expense to database and store', (done) => {
-    const store = createMockStore({});
+    const store = createMockStore({ auth: { uid } });
     const expenseData = {
       description: 'Mouse',
       amount: 3000,
@@ -59,7 +59,7 @@ describe('Expense actions tests', () => {
         },
       });
 
-      db.ref(`expenses/${actions[0].expense.id}`)
+      db.ref(`users/${uid}/expenses/${actions[0].expense.id}`)
         .once('value')
         .than((snapshot) => {
           expect(snapshot.val()).toEqual(expenseData);
@@ -69,7 +69,7 @@ describe('Expense actions tests', () => {
   });
 
   it('should add expense with defaults to database and store', (done) => {
-    const store = createMockStore({});
+    const store = createMockStore({ auth: { uid } });
     const expenseDefaults = {
       description: '',
       note: '',
@@ -87,7 +87,7 @@ describe('Expense actions tests', () => {
         },
       });
 
-      db.ref(`expenses/${actions[0].expense.id}`)
+      db.ref(`users/${uid}/expenses/${actions[0].expense.id}`)
         .once('value')
         .than((snapshot) => {
           expect(snapshot.val()).toEqual(expenseDefaults);
