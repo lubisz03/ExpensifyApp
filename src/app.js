@@ -9,6 +9,7 @@ import './styles/styles.scss';
 import 'react-day-picker/dist/style.css';
 import { firebase } from './firebase/firebase';
 import { createBrowserHistory } from 'history';
+import LoadingPage from './components/LoadingPage';
 
 const store = configureStore();
 const history = createBrowserHistory();
@@ -33,17 +34,17 @@ const renderApp = () => {
   }
 };
 
-root.render(<p>Loading...</p>);
+root.render(<LoadingPage />);
 
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     store.dispatch(login(user.uid));
     store.dispatch(startSetExpenses()).then(() => {
       renderApp();
+      if (history.location.pathname == '/') {
+        history.push('/dashboard');
+      }
     });
-    if (history.location.pathname == '/') {
-      history.push('/dashboard');
-    }
   } else {
     store.dispatch(logout());
     renderApp();

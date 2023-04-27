@@ -5,21 +5,11 @@ import { startLogout } from '../actions/auth';
 
 const Header = (props) => {
   return (
-    <header>
+    <header className='header'>
       <div className='content-container'>
         <div className='header__content'>
           <NavLink className='header__title' to='/dashboard'>
             <h1>Expensify</h1>
-          </NavLink>
-          <NavLink
-            to='/dashboard'
-            className={({ isActive }) => (isActive ? 'is-active' : undefined)}>
-            Dashboard
-          </NavLink>
-          <NavLink
-            to='/create'
-            className={({ isActive }) => (isActive ? 'is-active' : undefined)}>
-            Create Expense
           </NavLink>
           <button
             className='button button--link'

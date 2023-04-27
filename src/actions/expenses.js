@@ -44,7 +44,7 @@ export const removeExpense = ({ id } = {}) => ({
 });
 
 export const startRemoveExpense = ({ id } = {}) => {
-  return (dispatch) => {
+  return (dispatch, getState) => {
     const uid = getState().auth.uid;
     return db
       .ref(`users/${uid}/expenses/${id}`)

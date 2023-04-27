@@ -12,7 +12,7 @@ if (process.env.NODE_ENV === 'test') {
 }
 
 module.exports = {
-  entry: './src/app.js',
+  entry: ['babel-polyfill', './src/app.js'],
   output: {
     path: path.join(__dirname, 'public'),
     filename: 'bundle.js',
@@ -28,11 +28,27 @@ module.exports = {
         test: /\.s?css$/,
         use: ['style-loader', 'css-loader', 'sass-loader'],
       },
+      {
+        test: /\.(png|jpg|gif)$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+            },
+          },
+        ],
+      },
     ],
   },
   resolve: {
     modules: ['node_modules'],
     extensions: ['.ts', '.tsx', '.js', 'jsx', 'json'],
+    fallback: {
+      fs: false,
+      os: false,
+      path: false,
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({

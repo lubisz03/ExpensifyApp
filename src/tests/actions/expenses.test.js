@@ -1,10 +1,14 @@
 import React from 'react';
 import { render, screen, fireEvent } from '@testing-library/react';
 import {
-  addExpense,
-  removeExpense,
-  editExpense,
   startAddExpense,
+  addExpense,
+  editExpense,
+  startEditExpense,
+  removeExpense,
+  startRemoveExpense,
+  setExpenses,
+  startSetExpenses,
 } from '../../actions/expenses';
 import expenses from '../fixtures/expenses';
 import configureMockStore from 'redux-mock-store';
@@ -13,6 +17,8 @@ import db from '../../firebase/firebase';
 
 jest.setTimeout(25000);
 const createMockStore = configureMockStore([thunk]);
+const uid = 'thisismytestuid';
+const defaultAuthState = { auth: { uid } };
 
 describe('Expense actions tests', () => {
   it('should setup remove expense action object', () => {
@@ -41,7 +47,7 @@ describe('Expense actions tests', () => {
   });
 
   it('should add expense to database and store', (done) => {
-    const store = createMockStore({ auth: { uid } });
+    const store = createMockStore(defaultAuthState);
     const expenseData = {
       description: 'Mouse',
       amount: 3000,
@@ -69,7 +75,7 @@ describe('Expense actions tests', () => {
   });
 
   it('should add expense with defaults to database and store', (done) => {
-    const store = createMockStore({ auth: { uid } });
+    const store = createMockStore(defaultAuthState);
     const expenseDefaults = {
       description: '',
       note: '',
