@@ -5,14 +5,14 @@ require('dotenv').config();
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
-if (process.env.NODE_ENV === 'test') {
+if (process.env.NODE_ENV == 'test') {
   require('dotenv').config({ path: path.join(__dirname, '.env.test') });
 } else {
-  require('dotenv').config({ path: path.join(__dirname, '.env') });
+  require('dotenv').config({ path: path.join(__dirname, '.env.prod') });
 }
 
 module.exports = {
-  entry: ['babel-polyfill', './src/app.js'],
+  entry: './src/app.js',
   output: {
     path: path.join(__dirname, 'public'),
     filename: 'bundle.js',
