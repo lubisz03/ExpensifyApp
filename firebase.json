@@ -10,9 +10,8 @@
     ],
     "redirects": [
       {
-        "source": "/dashboard",
-        "destination": "/",
-        "type": 301
+        "source": "**",
+        "destination": "/"
       }
     ]
   }
