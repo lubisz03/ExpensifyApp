@@ -14,3 +14,17 @@
     margin: 0 $s-size 0 0;
   }
 }
+
+.input-group__btn {
+  background: transparent;
+  color: black;
+  border: solid 1px #cacccd;
+  height: 50px;
+  font-size: $font-size-large;
+  font-weight: 300;
+  padding: $s-size;
+  margin-bottom: $s-size;
+  @media (min-width: $desktop-breakpoint) {
+    margin: 0 $s-size 0 0;
+  }
+}

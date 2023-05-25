@@ -61,7 +61,7 @@ class ExpenseForm extends React.Component {
 
   render() {
     return (
-      <div data-testid='expense-form-test' className='content-container'>
+      <div data-testid='expense-form-test'>
         {this.state.error && <p className='form__error'>{this.state.error}</p>}
         <form
           onSubmit={this.onSubmit}

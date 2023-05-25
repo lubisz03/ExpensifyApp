@@ -30,7 +30,6 @@ const renderApp = () => {
   if (!hasRendered) {
     root.render(jsx);
     hasRendered = true;
-    console.log('true');
   }
 };
 

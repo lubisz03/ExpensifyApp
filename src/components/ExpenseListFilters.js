@@ -12,17 +12,16 @@ import moment from 'moment';
 
 export class ExpenseListFilters extends React.Component {
   state = {
-    calendarFocused: null,
+    calendarFocused: false,
   };
 
   onDatesChange = (e) => {
-    console.log(e);
     this.props.dispatch(setStartDate(moment(e.from)));
     this.props.dispatch(setEndDate(moment(e.to)));
   };
 
   onFocusChange = (calendarFocused) => {
-    this.setState(() => ({ calendarFocused }));
+    this.setState(() => ({ calendarFocused: !this.state.calendarFocused }));
   };
 
   render() {
@@ -55,14 +54,29 @@ export class ExpenseListFilters extends React.Component {
             </select>
           </div>
           <div className='input-group__item'>
-            <DayPicker
-              mode='range'
-              selected={{
-                from: this.props.filters.startDate._d,
-                to: this.props.filters.endDate._d,
-              }}
-              onSelect={this.onDatesChange}
-            />
+            {!this.state.calendarFocused ? (
+              <button
+                onClick={this.onFocusChange}
+                className='input-group__btn button'>
+                Calendar
+              </button>
+            ) : (
+              <>
+                <button
+                  onClick={this.onFocusChange}
+                  className='input-group__btn button'>
+                  Calendar
+                </button>
+                <DayPicker
+                  mode='range'
+                  selected={{
+                    from: this.props.filters.startDate._d,
+                    to: this.props.filters.endDate._d,
+                  }}
+                  onSelect={this.onDatesChange}
+                />
+              </>
+            )}
           </div>
         </div>
       </div>
