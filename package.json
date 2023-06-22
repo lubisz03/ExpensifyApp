@@ -12,7 +12,7 @@
     "deploy": "firebase use prod && npm run build && firebase deploy"
   },
   "author": "Antoni Łubisz",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "date-fns": "^2.29.3",
     "dotenv": "^16.0.3",
