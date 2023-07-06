@@ -6,9 +6,10 @@
       "**/.*",
       "**/node_modules/**",
       ".env.test",
-      ".env"
+      ".env.prod",
+      "**/coverage/**"
     ],
-    "redirects": [
+    "rewrites": [
       {
         "source": "**",
         "destination": "/"
